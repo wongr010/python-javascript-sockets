@@ -19,8 +19,9 @@ class BroadcastServerProtocol(WebSocketServerProtocol):
     def onMessage(self, payload, isBinary):
         if not isBinary:
             msg = "{} from {}".format(payload.decode('utf8'), self.peer)
-            newmsg="skip"
-            self.factory.broadcast(newmsg)
+            print("I just got {} \n".format(payload.decode('utf8')))
+            
+            self.factory.broadcast(payload.decode('utf8'))
 
     def connectionLost(self, reason):
         WebSocketServerProtocol.connectionLost(self, reason)
@@ -71,8 +72,8 @@ class BroadcastPreparedServerFactory(BroadcastServerFactory):
 
     def broadcast(self, msg):
         print("broadcasting prepared message '{}' ..".format(msg))
-        #preparedMsg = self.prepareMessage(msg)
-        preparedMsg="skip"
+        preparedMsg = self.prepareMessage(msg)
+        #preparedMsg="skip"
         for c in self.clients:
             c.sendPreparedMessage(preparedMsg)
             print("prepared message sent to {}".format(c.peer))
