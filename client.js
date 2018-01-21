@@ -17,18 +17,6 @@ sock.onmessage = function(e) {
 	else{
 		console.log("Stop!\n");
 	}
-    // switch(e.data) {
-    //        case "skip":
-    //            console.log("Skip\n");
-    //            break;
-    //        case "volume":
-    //            console.log("Volume\n");
-    //            break;
-    //        case "stop":
-    //            console.log("stop\n");
-    //            break;
-    //        default:
-    //            console.log("unknown message " + e.data);
-    //            break;
+ 
        
     }
