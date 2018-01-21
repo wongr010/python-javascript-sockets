@@ -9,7 +9,7 @@ sock.onopen = function () {
 };
 
 sock.onmessage = function(e) {
-	var num=parseInt(e.data);
+	var num=e.data;
 	console.log(e.data);
 	if (num<90){
 		console.log("Good range\n");
