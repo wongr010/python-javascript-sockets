@@ -17,7 +17,7 @@ class BroadcastClientProtocol(WebSocketClientProtocol):
 
     def sendHello(self):
         rand_int=random.randint(1,101)
-        print("sending {}\n".format(rand_int))
+        print"sending {}\n".format(rand_int)
         str_int=str(rand_int)
         self.sendMessage(str_int.encode('utf8'))
         reactor.callLater(5, self.sendHello)
@@ -27,13 +27,13 @@ class BroadcastClientProtocol(WebSocketClientProtocol):
 
     def onMessage(self, payload, isBinary):
         if not isBinary:
-            print("Text message received: {}".format(payload.decode('utf8')))
+            print"Text message received: {}".format(payload.decode('utf8'))
 
 
 if __name__ == '__main__':
 
     if len(sys.argv) < 2:
-        print("Need the WebSocket server address, i.e. ws://127.0.0.1:9000")
+        print"Need the WebSocket server address, i.e. ws://127.0.0.1:9000"
         sys.exit(1)
 
     factory = WebSocketClientFactory(sys.argv[1])

@@ -19,7 +19,7 @@ class BroadcastServerProtocol(WebSocketServerProtocol):
     def onMessage(self, payload, isBinary):
         if not isBinary:
             msg = "{} from {}".format(payload.decode('utf8'), self.peer)
-            print("I just got {} \n".format(payload.decode('utf8')))
+            print"I just got {} \n".format(payload.decode('utf8'))
             
             self.factory.broadcast(payload.decode('utf8'))
 
@@ -60,7 +60,7 @@ class BroadcastServerFactory(WebSocketServerFactory):
         print("broadcasting message '{}' ..".format(msg))
         for c in self.clients:
             c.sendMessage(msg.encode('utf8'))
-            print("message sent to {}".format(c.peer))
+            print"message sent to {}".format(c.peer)
 
 
 class BroadcastPreparedServerFactory(BroadcastServerFactory):
@@ -76,7 +76,7 @@ class BroadcastPreparedServerFactory(BroadcastServerFactory):
         #preparedMsg="skip"
         for c in self.clients:
             c.sendPreparedMessage(preparedMsg)
-            print("prepared message sent to {}".format(c.peer))
+            print"prepared message sent to {}".format(c.peer)
 
 
 if __name__ == '__main__':
